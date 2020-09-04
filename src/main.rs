@@ -1,23 +1,37 @@
-//use std::io::BufferedReader;
-//use std::io::File;
-//use std::from_str::from_str;
 use std::fs;
+use std::fs::File;
+use std::io::Write;
+
 
 fn main() {
     let fname = "list.txt";
-    //let path = Path::new(fname);
-    //let mut file = BufferedReader::new(File::open(&path));
     
     //read contents of file
     let contents = fs::read_to_string(fname)
         .expect("Something went wrong reading the file");
     //separate contents into separate lines
-    let items = contents.lines().collect::<Vec<_>>();
+    let mut items = contents.lines().collect::<Vec<_>>();
 
     //iterate through lines and print them
-    for item in items.iter()
+    for (i, item) in items.iter().enumerate()
     {
-        println!("Task: {}", item);
+        println!("Task {}: {}", i+1, item);
     }
 
+    //Test adding items to list
+    items.push("Take a nap in R'lyeh");
+
+  
+
+    let mut file = File::open(fname).unwrap();
+    
+
+    for item in items.iter()
+    {
+        file.write_all(item.as_bytes());
+     
+    }
+
+    file.sync_all();
+  
 }
