@@ -27,34 +27,17 @@ fn main() {
         file_save += item;
         file_save += "\n"
     }
+    
+    //Replaces the file with a file containing "Test write - replace"
+    let mut fileNew = File::create(fname).unwrap();
+    fileNew.write_all(file_save.as_bytes());  
+}
 
+//Testing fragments
+ 
+    /*
     //iterate through lines and print them
     for (i, item) in items.iter().enumerate()
     {
         println!("Task {}: {}", i+1, item);
-    }
-
-    println!("{}",file_save);
-
-    
-    //This fragment replaces the file with a file containing "Test write - replace"
-    let mut fileNew = File::create(fname).unwrap();
-    fileNew.write_all(file_save.as_bytes());
-
-    /*
-    
-    
-    for item in items.iter()
-    {
-        file.write_all(item.as_bytes());
-     
-    }
-    */
-
-    
-    
-    
-
-    
-  
-}
+    }*/
