@@ -1,5 +1,8 @@
-Clean the House
-Make Lunch
-Eat the Dog
-Summon Yog-Sothoth
-Worship Nyarlatothep
+Make Program Upate File
+Perform architecture transfer from function to function that calls new instances of a struct
+Implement Task Removal
+Implement User Inputted Add Task
+Implement Task reorganization
+Work on GUI?
+Replace .txt file with database?
+
