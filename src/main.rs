@@ -1,36 +1,38 @@
 use std::fs;
 use std::fs::File;
 use std::io::Write;
+mod to_do_list;
+use to_do_list::ToDoList;
 
 
 fn main() {
-    let fname = "./src/list.txt";
 
-    let mut file = File::open(fname).unwrap();
+    let fname = "./src/list.txt";
+    let mut list = ToDoList::new();
 
     //read contents of file
     let contents = fs::read_to_string(fname)
         .expect("Something went wrong reading the file");
 
-    //separate contents into separate lines
-    let mut items = contents.lines().collect::<Vec<_>>();
-
-  
-
+    for item in contents.lines() {
+        list.add_task(item.to_string());
+    }
+    
     //Test adding items to list
-    items.push("Replace .txt file with database?");
+    list.add_task(String::from("Replace .txt file with database?"));
+    
 
     let mut file_save = String::new();
 
-    for item in items.iter()
+    for item in list.task_iter()
     {
         file_save += item;
         file_save += "\n"
     }
     
     //Replaces the file with a file containing "Test write - replace"
-    let mut fileNew = File::create(fname).unwrap();
-    fileNew.write_all(file_save.as_bytes());  
+    let mut file_new = File::create(fname).unwrap();
+    file_new.write_all(file_save.as_bytes()).unwrap();  
 }
 
 //Testing fragments

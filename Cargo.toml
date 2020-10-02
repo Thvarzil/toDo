@@ -1,5 +1,5 @@
 [package]
-name = "toDo"
+name = "to_do"
 version = "0.1.0"
 authors = ["Thvarzil <louisblebohec@gmail.com>"]
 edition = "2018"
