@@ -11,6 +11,25 @@ impl ToDoList{
         self.tasks.push(new_task);
     }
 
+    pub fn reprioritize(&mut self, cur_index: int, new_index: int){
+        if(cur_index>new_index){
+            //some logic
+        }
+        else if(cur_index<new_index){
+            //some other logic
+        }
+    }
+
+    pub fn delete_task(&mut self, task_index: int){
+        //some logic
+    }
+
+    pub fn complete_task(&mut self, task_index:int){
+        //some logic to add task to complete list
+
+        self.delete_task(task_index);
+    }
+
     pub fn new() -> Self{
         //The One True Constructor
         Self {
