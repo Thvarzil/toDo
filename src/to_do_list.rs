@@ -12,9 +12,8 @@ impl ToDoList{
     }
 
     pub fn reprioritize(&mut self, cur_index: usize, new_index: usize){
-        //assert!(!cur_index>=self.tasks.len());
-
-        let temp = self.tasks[cur_index].to_string();
+        //Will need some sort of protection here for if user enters bad index
+        let temp = self.tasks.remove(cur_index);
         self.tasks.insert(new_index, temp);
     }
 
@@ -25,6 +24,7 @@ impl ToDoList{
     pub fn complete_task(&mut self, task_index: usize){
         //some logic to add task to complete list
 
+        self.complete.push(self.tasks[task_index].to_string());
         self.delete_task(task_index);
     }
 
