@@ -1,8 +1,8 @@
-Make Program Upate File
-Perform architecture transfer from function to function that calls new instances of a struct
+Implement Task reorganization
 Implement Task Removal
 Implement User Inputted Add Task
-Implement Task reorganization
 Work on GUI?
 Replace .txt file with database?
-
+C
+Make Program Upate File
+Perform architecture transfer from function to function that calls new instances of a struct
