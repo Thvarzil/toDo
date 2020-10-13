@@ -1,7 +1,7 @@
 
 pub struct ToDoList{
     tasks: Vec<String>,
-
+    complete: Vec<String>,
 
 }
 
@@ -11,20 +11,18 @@ impl ToDoList{
         self.tasks.push(new_task);
     }
 
-    pub fn reprioritize(&mut self, cur_index: int, new_index: int){
-        if(cur_index>new_index){
-            //some logic
-        }
-        else if(cur_index<new_index){
-            //some other logic
-        }
+    pub fn reprioritize(&mut self, cur_index: usize, new_index: usize){
+        //assert!(!cur_index>=self.tasks.len());
+
+        let temp = self.tasks[cur_index].to_string();
+        self.tasks.insert(new_index, temp);
     }
 
-    pub fn delete_task(&mut self, task_index: int){
-        //some logic
+    pub fn delete_task(&mut self, task_index: usize){
+        self.tasks.remove(task_index);
     }
 
-    pub fn complete_task(&mut self, task_index:int){
+    pub fn complete_task(&mut self, task_index: usize){
         //some logic to add task to complete list
 
         self.delete_task(task_index);
@@ -34,6 +32,7 @@ impl ToDoList{
         //The One True Constructor
         Self {
             tasks: Vec::new(),
+            complete: Vec::new(),
         }
     }
 
