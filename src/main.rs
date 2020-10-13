@@ -22,11 +22,7 @@ fn main() {
             }
         }
     }
-
-    for item in list.task_iter() {
-        println!("{}", item);
-    }
-
+    
     //Test completing item on list
     list.complete_task(0);
 
