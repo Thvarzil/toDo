@@ -11,6 +11,11 @@ impl ToDoList{
         self.tasks.push(new_task);
     }
 
+    pub fn add_comp(&mut self, new_task: String){
+        assert!(!new_task.contains('\n'));
+        self.complete.push(new_task);
+    }
+
     pub fn reprioritize(&mut self, cur_index: usize, new_index: usize){
         //Will need some sort of protection here for if user enters bad index
         let temp = self.tasks.remove(cur_index);
@@ -38,5 +43,9 @@ impl ToDoList{
 
     pub fn task_iter(&self) -> impl Iterator<Item=&str>{
         self.tasks.iter().map(|s| s.as_str())
+    }
+
+    pub fn comp_iter(&self) -> impl Iterator<Item=&str>{
+        self.complete.iter().map(|s| s.as_str())
     }
 }

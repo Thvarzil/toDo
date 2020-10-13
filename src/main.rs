@@ -9,17 +9,30 @@ fn main() {
 
     let fname = "./src/list.txt";
     let mut list = ToDoList::new();
-
+    let mut is_completed = false;
     //read contents of file
     let contents = fs::read_to_string(fname)
         .expect("Something went wrong reading the file");
 
     for item in contents.lines() {
-        list.add_task(item.to_string());
+        if !is_completed {
+            list.add_task(item.to_string());
+        }
+        else if is_completed {
+            list.add_comp(item.to_string());
+        }
+        else if item=="C\n"{
+            is_completed = true;
+        }
     }
     
-    //Test adding items to list
-    list.add_task(String::from("Replace .txt file with database?"));
+    for item in list.task_iter()
+    {
+        println!("{}", item);
+    }
+
+    //Test completing item on list
+    list.delete_task(0);
     
 
     let mut file_save = String::new();
@@ -29,8 +42,14 @@ fn main() {
         file_save += item;
         file_save += "\n"
     }
+
+    for item in list.comp_iter()
+    {
+        file_save += item;
+        file_save += "\n"
+    }
     
-    //Replaces the file with a file containing "Test write - replace"
+    //Replaces the file with updated list
     let mut file_new = File::create(fname).unwrap();
     file_new.write_all(file_save.as_bytes()).unwrap();  
 }
