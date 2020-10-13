@@ -15,15 +15,18 @@ fn main() {
         .expect("Something went wrong reading the file");
 
     for item in contents.lines() {
+        if is_completed {
+            list.add_comp(item.to_string());ƒƒƒƒƒ
+        }
+        else {
         if !is_completed {
             list.add_task(item.to_string());
         }
-        else if is_completed {
-            list.add_comp(item.to_string());
-        }
+        
         else if item=="C\n"{
             is_completed = true;
         }
+    }
     }
     
     for item in list.task_iter()
