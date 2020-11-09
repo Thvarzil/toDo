@@ -3,6 +3,7 @@ use std::fs::File;
 use std::io::Write;
 mod to_do_list;
 use to_do_list::ToDoList;
+use std::env;
 
 fn main() {
     let fname = "./src/list.txt";
