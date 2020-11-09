@@ -14,10 +14,29 @@ fn main() {
 
     //running parse_input to test user input functionality
     let args: Vec<String> = env::args().collect();
-
     let input = parse_input(&args);
     println!("{}", input.to_string());
 
+    /*
+    *   
+    *
+    *   There are a couple of ways I can handle the user input - but unless I can figure out 
+    *   a way to prompt the user for input rather than have it in the same line as executing the program, 
+    *   there isn't a good way to tell the user what to expect. 
+    *
+    *   I can have the user enter a number which is associated with a particular function of the struct, 
+    *   followed by the arguments required by the function - this seems like the best option for now.
+    *
+    *   The other thing that is lacking here, is that the program updates the file too frequently, on a one 
+    *   update per command basis, requiring  the user to run the program again to do another command. Something
+    *   that will need ot come with the 'prompt user for input' functionality is the ability to maintain the 
+    *   program in a running state while executing any number of changes to the list, and saving the updated 
+    *   contents once the program is told to end. 
+    *
+    *
+    */
+
+    //iterates through lines for .txt file, adds them as tasks in the list object
     for item in contents.lines() {
         if is_completed {
             list.add_comp(item.to_string());
@@ -30,6 +49,7 @@ fn main() {
         }
     }
 
+    //prints contents of list, for testing purposes.
     for item in list.task_iter() {
         println!("{}", item);
     }
