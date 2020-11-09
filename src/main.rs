@@ -12,6 +12,12 @@ fn main() {
     //read contents of file
     let contents = fs::read_to_string(fname).expect("Something went wrong reading the file");
 
+    //running parse_input to test user input functionality
+    let args: Vec<String> = env::args().collect();
+
+    let input = parse_input(&args);
+    println!("{}", input.to_string());
+
     for item in contents.lines() {
         if is_completed {
             list.add_comp(item.to_string());
@@ -45,6 +51,22 @@ fn main() {
     //Replaces the file with updated list
     let mut file_new = File::create(fname).unwrap();
     file_new.write_all(file_save.as_bytes()).unwrap();
+}
+
+fn parse_input(args: &[String]) -> String {
+
+    let mut input_string = String::new();
+
+    //for loop to compile arguments into single string
+    for arg in args{
+        //if statement to ignore default first argument of library name
+        if args.iter().position(|r| r == arg).unwrap()!=0{
+            input_string.push_str(arg);
+        }
+    }
+
+    return input_string;
+
 }
 
 //Testing fragments
